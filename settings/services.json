@@ -1,0 +1,18 @@
+{
+	"game": {
+		"name": "跑酷",
+		"appid": "615515551",
+		"cid": "0"
+	},
+	"configs": [
+		{
+			"appid": "615515551",
+			"services": [
+				{
+					"service_id": "241",
+					"enable": false
+				}
+			]
+		}
+	]
+}
