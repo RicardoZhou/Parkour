@@ -1,8 +1,7 @@
 {
 	"game": {
-		"name": "跑酷",
-		"appid": "615515551",
-		"cid": "0"
+		"name": "未知游戏",
+		"appid": "UNKNOW"
 	},
 	"configs": [
 		{
@@ -13,6 +12,9 @@
 					"enable": false
 				}
 			]
+		},
+		{
+			"appid": "UNKNOW"
 		}
 	]
 }
