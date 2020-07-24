@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        507.4908866176811,
+        348.2293640767653,
         0,
         0,
         0,
@@ -560,13 +560,13 @@
       }
     ],
     "_prefab": null,
-    "_opacity": 200,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 128,
       "g": 128,
       "b": 128,
-      "a": 200
+      "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -844,7 +844,9 @@
     "__type__": "cc.PrivateNode",
     "_name": "RICHTEXT_CHILD",
     "_objFlags": 1024,
-    "_parent": null,
+    "_parent": {
+      "__id__": 14
+    },
     "_children": [],
     "_active": true,
     "_components": [
@@ -902,7 +904,7 @@
     "_groupIndex": 0,
     "groupIndex": 0,
     "showInEditor": false,
-    "_id": "6azwz5TJVJNK+4lI1YhNAF"
+    "_id": "4ahlux1plMcYmmHnacuhfe"
   },
   {
     "__type__": "cc.Label",
@@ -917,6 +919,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_useOriginalSize": true,
     "_string": "完成新手任务解锁",
     "_N$string": "完成新手任务解锁",
@@ -934,7 +938,7 @@
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
     "_N$cacheMode": 0,
-    "_id": "48dFhT2UZBQLS+3Ar3gGtM"
+    "_id": "69KbapwmBKqZ2gUdVYk0JN"
   },
   {
     "__type__": "cc.LabelOutline",
@@ -952,7 +956,7 @@
       "a": 255
     },
     "_width": 3,
-    "_id": "88Gy4+TnRCM77/Protfpag"
+    "_id": "62SWAT9XBNLaC1mJCL9ILK"
   },
   {
     "__type__": "cc.RichText",
@@ -1032,7 +1036,7 @@
       "r": 128,
       "g": 128,
       "b": 128,
-      "a": 200
+      "a": 255
     },
     "_N$normalSprite": {
       "__uuid__": "eebde411-5a01-4031-9844-23cafa0538de"
@@ -1116,13 +1120,13 @@
       }
     ],
     "_prefab": null,
-    "_opacity": 200,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 128,
       "g": 128,
       "b": 128,
-      "a": 200
+      "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -1400,7 +1404,9 @@
     "__type__": "cc.PrivateNode",
     "_name": "RICHTEXT_CHILD",
     "_objFlags": 1024,
-    "_parent": null,
+    "_parent": {
+      "__id__": 25
+    },
     "_children": [],
     "_active": true,
     "_components": [
@@ -1458,7 +1464,7 @@
     "_groupIndex": 0,
     "groupIndex": 0,
     "showInEditor": false,
-    "_id": "40DOYY0LhDIbwRXpoMfcGh"
+    "_id": "a5z4ekAfVLVqUcGtGgdoBl"
   },
   {
     "__type__": "cc.Label",
@@ -1473,6 +1479,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_useOriginalSize": true,
     "_string": "完成新手任务解锁",
     "_N$string": "完成新手任务解锁",
@@ -1490,7 +1498,7 @@
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
     "_N$cacheMode": 0,
-    "_id": "87J/ME9W9IK4rOAk1cWLif"
+    "_id": "63yvzLmpVJ6IXI0jfmRbnW"
   },
   {
     "__type__": "cc.LabelOutline",
@@ -1508,7 +1516,7 @@
       "a": 255
     },
     "_width": 3,
-    "_id": "4eL5GfgllGlbw9B6BcnCBo"
+    "_id": "0c30obfPpD9oigy68EeHZd"
   },
   {
     "__type__": "cc.RichText",
@@ -1588,7 +1596,7 @@
       "r": 128,
       "g": 128,
       "b": 128,
-      "a": 200
+      "a": 255
     },
     "_N$normalSprite": {
       "__uuid__": "5c63f6e4-90cb-49c4-89cc-473efebedaa7"
@@ -4260,8 +4268,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
-        0,
+        26.259,
+        145.737,
         0,
         0,
         0,
@@ -5636,7 +5644,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -5971,6 +5979,14 @@
     "heroView": {
       "__id__": 89
     },
+    "heroPref": [
+      {
+        "__uuid__": "15160677-e14f-4d20-9c0f-024292783f23"
+      },
+      {
+        "__uuid__": "b905e0b6-ec28-4852-bf2c-8fe87df20b39"
+      }
+    ],
     "selHeroPref": {
       "__uuid__": "b8a87f0e-332c-4036-bed1-ffadff7300c2"
     },

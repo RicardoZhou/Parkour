@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "RoomEyeR",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 2.375,
+  "sample": 8,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "83516670-eeb1-44f2-b8d0-bd08994394e1"
+            }
+          },
+          {
+            "frame": 0.125,
+            "value": {
+              "__uuid__": "b13e970b-8ce9-4a60-9eb0-6869b0628278"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "4c726df4-e368-453e-8ce5-6483da7b3e3c"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "b13e970b-8ce9-4a60-9eb0-6869b0628278"
+            }
+          },
+          {
+            "frame": 0.625,
+            "value": {
+              "__uuid__": "83516670-eeb1-44f2-b8d0-bd08994394e1"
+            }
+          },
+          {
+            "frame": 2.25,
+            "value": {
+              "__uuid__": "83516670-eeb1-44f2-b8d0-bd08994394e1"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
