@@ -1,3 +1,5 @@
+import { UIEventType } from "./Define/EventDef";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -8,25 +10,41 @@ export default class SelHeroPrefab extends cc.Component {
     @property(cc.SpriteAtlas)
     gameUI: cc.SpriteAtlas = null;
 
-    // onLoad () {}
+    heroId: number = null;
 
-    start() {
-
+    init(id: number) {
+        this.heroId = id;
+        const { TOUCH } = cc.Event;
+        TOUCH
     }
 
-    setStyle(style: number) {
+    setSelType(selId: number) {
         let frame: cc.SpriteFrame;
-        switch (style) {
-            case 0:
-                frame = this.gameUI.getSpriteFrame('GameUI16');
+        switch (selId) {
+            case this.heroId:
+                frame = this.gameUI.getSpriteFrame('GameUI17');
                 this.bgSprite.spriteFrame = frame;
                 break;
-            case 1:
-                frame = this.gameUI.getSpriteFrame('GameUI17');
+            default:
+                frame = this.gameUI.getSpriteFrame('GameUI16');
                 this.bgSprite.spriteFrame = frame;
                 break;
         }
     }
 
-    // update (dt) {}
+    onSelHeroTouch(event: cc.Event.EventTouch) {
+        this.node.parent.emit(UIEventType.HERO_SEL, this.heroId);
+    }
+
+    onSelHeroEvent(id: number) {
+        this.setSelType(id == this.heroId ? 1 : 0);
+    }
+
+    onEnable() {
+        this.node.on(UIEventType.HERO_SEL, this.onSelHeroEvent, this);
+    }
+
+    onDisable() {
+        this.node.off(UIEventType.HERO_SEL, this.onSelHeroEvent, this);
+    }
 }

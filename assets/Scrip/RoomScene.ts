@@ -1,5 +1,6 @@
 import SelHeroPrefab from "./SelHeroPrefab";
 import ScaleAdapter from "./Utils/UI/ScaleAdapter";
+import { UIEventType } from "./Define/EventDef";
 
 const { ccclass, property } = cc._decorator;
 
@@ -14,42 +15,48 @@ export default class RoomScene extends cc.Component {
     mainView: cc.Node = null;
     @property(cc.Node)//英雄选择界面
     heroView: cc.Node = null;
+    @property(cc.Node)
+    heroBodyContent: cc.Node = null;
 
     @property([cc.Prefab])//角色prefab
-    heroPref: cc.Prefab[] = [];
+    heroBodyPref: cc.Prefab[] = [];
 
-    @property(cc.Prefab)//选择角色prefab
+    @property(cc.Prefab)//选择角色Item prefab
     selHeroPref: cc.Prefab = null;
     @property(cc.Node)//选择角色容器
     selHeroContent: cc.Node = null;
 
-    // LIFE-CYCLE CALLBACKS:
+    selHeroId: number = null;
 
     onLoad() {
+        this.selHeroId = 0;
+
         this.mainView.setPosition(cc.v2(0, 0));
-        for (let btn of this.btnInfo) {
-            btn.node.on(cc.Node.EventType.TOUCH_START, this.onBtnInfoStart);
-            btn.node.on(cc.Node.EventType.TOUCH_END, this.onBtnInfoEnd);
-            btn.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onBtnInfoCancel);
-        }
 
-        let layout: cc.Layout = this.selHeroContent.getComponent(cc.Layout);
-
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < this.heroBodyPref.length; i++) {
             let heroSel: cc.Node = cc.instantiate(this.selHeroPref);
-            this.selHeroContent.addChild(heroSel);
-            let hero = cc.instantiate(this.heroPref[i == 0 ? 0 : 1]);
+            heroSel.parent = this.selHeroContent;
+            let hero = cc.instantiate(this.heroBodyPref[i]);
             hero.parent = heroSel.getChildByName('Content');
             hero.addComponent(ScaleAdapter);
-            if (i == 0)
-                heroSel.getComponent(SelHeroPrefab).setStyle(0);
-            else
-                heroSel.getComponent(SelHeroPrefab).setStyle(1);
+            let script = heroSel.getComponent(SelHeroPrefab);
+            script.init(i);
+            script.setSelType(this.selHeroId);
         }
+        this.showSelHeroBody();
     }
 
     start() {
         this.onShowMainView();
+    }
+
+    onEnable() {
+        for (let btn of this.btnInfo) {
+            btn.node.on(cc.Node.EventType.TOUCH_START, this.onBtnInfoStart, this, false);
+            btn.node.on(cc.Node.EventType.TOUCH_END, this.onBtnInfoEnd, this, false);
+            btn.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onBtnInfoCancel, this, false);
+        }
+        this.selHeroContent.on(UIEventType.HERO_SEL, this.onSelHeroEvent, this, false);
     }
 
     onShowMainView() {
@@ -60,6 +67,15 @@ export default class RoomScene extends cc.Component {
     onShowHeroView() {
         this.mainView.active = false;
         this.heroView.active = true;
+    }
+
+    showSelHeroBody(id?: number) {
+        if (id !== undefined)
+            this.selHeroId = id;
+        this.heroBodyContent.removeAllChildren();
+        let body = cc.instantiate(this.heroBodyPref[this.selHeroId]);
+        body.addComponent(ScaleAdapter);
+        body.parent = this.heroBodyContent;
     }
 
     onBtnInfoStart(event: cc.Event.EventTouch) {
@@ -77,9 +93,23 @@ export default class RoomScene extends cc.Component {
         sprite.active = false;
     }
 
+    onSelHeroEvent(id: number) {
+        this.onShowMainView();
+        this.showSelHeroBody(id);
+        for (let body of this.selHeroContent.children)
+            body.getComponent(SelHeroPrefab).setSelType(id);
+    }
+
     onChangeScene() {
         cc.director.loadScene('GameScene');
     }
 
-    // update (dt) {}
+    onDisable() {
+        for (let btn of this.btnInfo) {
+            btn.node.off(cc.Node.EventType.TOUCH_START, this.onBtnInfoStart, this, false);
+            btn.node.off(cc.Node.EventType.TOUCH_END, this.onBtnInfoEnd, this, false);
+            btn.node.off(cc.Node.EventType.TOUCH_CANCEL, this.onBtnInfoCancel, this, false);
+        }
+        this.selHeroContent.off(UIEventType.HERO_SEL, this.onSelHeroEvent, this, false);
+    }
 }
