@@ -3,10 +3,10 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class ScaleAdapter extends cc.Component {
 
-    @property(Boolean)
-    xAdp: Boolean = true;
-    @property(Boolean)
-    yAdp: Boolean = true;
+    @property
+    xAdp: boolean = true;
+    @property
+    yAdp: boolean = true;
 
     onEnable() {
         if (!this.node.parent)

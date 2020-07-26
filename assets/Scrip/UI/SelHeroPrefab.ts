@@ -1,4 +1,4 @@
-import { UIEventType } from "./Define/EventDef";
+import { UIEventType } from "../Define/EventDef";
 
 const { ccclass, property } = cc._decorator;
 
@@ -14,8 +14,6 @@ export default class SelHeroPrefab extends cc.Component {
 
     init(id: number) {
         this.heroId = id;
-        const { TOUCH } = cc.Event;
-        TOUCH
     }
 
     setSelType(selId: number) {
@@ -30,21 +28,5 @@ export default class SelHeroPrefab extends cc.Component {
                 this.bgSprite.spriteFrame = frame;
                 break;
         }
-    }
-
-    onSelHeroTouch(event: cc.Event.EventTouch) {
-        this.node.parent.emit(UIEventType.HERO_SEL, this.heroId);
-    }
-
-    onSelHeroEvent(id: number) {
-        this.setSelType(id == this.heroId ? 1 : 0);
-    }
-
-    onEnable() {
-        this.node.on(UIEventType.HERO_SEL, this.onSelHeroEvent, this);
-    }
-
-    onDisable() {
-        this.node.off(UIEventType.HERO_SEL, this.onSelHeroEvent, this);
     }
 }
