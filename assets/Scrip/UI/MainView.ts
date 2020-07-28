@@ -47,7 +47,7 @@ export default class MainView extends UIBase {
     showSelHeroBody(id?: number) {
         if (id === this.selHeroId)
             return;
-        this.selHeroId = id === undefined ? ModelManager.getPlayer().selHeroId : id;
+        this.selHeroId = id === undefined ? ModelManager.getPlayer().getSelId() : id;
         this.heroBodyContent.removeAllChildren();
         let body = cc.instantiate(this.heroBodyPref[this.selHeroId]);
         body.addComponent(ScaleAdapter);

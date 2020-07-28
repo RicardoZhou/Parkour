@@ -39,7 +39,7 @@ export default class BaseView extends cc.Component {
         this.heroMng.enter(this, this.changeGameState);
     }
 
-    moveBg(dt) {
+    moveBg(dt: number) {
         for (let i = 0; i < 2; i++) {
             this.bg1[i].x -= dt * GameDef.BG_MIDDLE_SPEED;
             if (this.bg1[i].x < -this.bg1[i].width)

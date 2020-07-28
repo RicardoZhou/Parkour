@@ -2,26 +2,22 @@ const { ccclass, property } = cc._decorator;
 import { GAMER_STATE } from '../Define/GameDef';
 
 @ccclass
-export default class HeroBaseMng extends cc.Component {
+export default abstract  class HeroBaseMng extends cc.Component {
 
     @property(cc.Animation)
     animation: cc.Animation = null;
+    @property
+    jumpMax: number = 0;
 
+    //now jump stage, if jumpStage > jumpMax, can not jump next
+    jumpStage: number = -1;
     baseY: number;
     state: GAMER_STATE = 0;
 
     onLoad() {
     }
 
-    start() {
-
-    }
-
-    onEnable() {
-    }
-
-    update(dt) {
-    }
+    abstract jump(): void;
 
     setGamerState(state: string) {
         this.state = GAMER_STATE[state];
@@ -43,6 +39,9 @@ export default class HeroBaseMng extends cc.Component {
                 return GAMER_STATE.jump == GAMER_STATE[clip]
                     || GAMER_STATE.slip == GAMER_STATE[clip];
             case GAMER_STATE.jump:
+                return GAMER_STATE.jump == GAMER_STATE[clip]
+                    || GAMER_STATE.run == GAMER_STATE[clip]
+                    || GAMER_STATE.slip == GAMER_STATE[clip];
             case GAMER_STATE.slip:
                 return GAMER_STATE.run == GAMER_STATE[clip];
             default:
@@ -62,19 +61,8 @@ export default class HeroBaseMng extends cc.Component {
         this.setGamerState('enter');
     }
 
-    jump() {
-        let time = 0.9;
-        this.node.stopAllActions()
-        let moveUp = cc.moveBy(time, cc.v2(0, 200)).easing(cc.easeCubicActionOut());
-        let moveDown = cc.moveTo(time, cc.v2(this.node.x, this.baseY)).easing(cc.easeCubicActionIn());
-        let callFunc = cc.callFunc(this.run, this)
-        let act = cc.sequence(moveUp, moveDown, callFunc)
-        this.node.runAction(act);
-        this.animation.play('roll');
-        this.setGamerState('jump');
-    }
-
     run() {
+        this.jumpStage = -1;
         this.animation.play('run');
         this.setGamerState('run');
     }

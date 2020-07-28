@@ -3171,6 +3171,18 @@
     "selHeroContent": {
       "__id__": 11
     },
+    "textGold": {
+      "__id__": 59
+    },
+    "textDiamonds": {
+      "__id__": 77
+    },
+    "btnGold": {
+      "__id__": 61
+    },
+    "btnDiamonds": {
+      "__id__": 79
+    },
     "btnClose": {
       "__id__": 41
     },
