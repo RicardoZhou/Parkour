@@ -2,7 +2,17 @@
   "assets-sort-type": "name",
   "collision-matrix": [
     [
+      false
+    ],
+    [
+      false,
+      false,
       true
+    ],
+    [
+      false,
+      true,
+      false
     ]
   ],
   "design-resolution-height": 720,
@@ -26,7 +36,9 @@
   "fit-height": true,
   "fit-width": true,
   "group-list": [
-    "default"
+    "default",
+    "Hero",
+    "Floor"
   ],
   "last-module-event-record-time": 1595858933135,
   "simulator-orientation": false,
@@ -36,8 +48,9 @@
   },
   "use-customize-simulator": true,
   "use-project-simulator-setting": false,
-  "start-scene": "current",
+  "start-scene": "27f68b39-5a26-47dc-a5ec-a00066d04d8b",
   "migrate-history": [
     "cloud-function"
-  ]
+  ],
+  "preview-port": 7456
 }

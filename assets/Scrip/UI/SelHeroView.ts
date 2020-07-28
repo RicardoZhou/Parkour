@@ -15,6 +15,14 @@ export default class SelHeroView extends UIBase {
     selHeroItemPref: cc.Prefab = null;
     @property(cc.Node)//选择角色容器
     selHeroContent: cc.Node = null;
+    @property(cc.Label)
+    textGold: cc.Label = null;
+    @property(cc.Label)
+    textDiamonds: cc.Label = null;
+    @property(cc.Node)
+    btnGold: cc.Node = null;
+    @property(cc.Node)
+    btnDiamonds: cc.Node = null;
     @property(cc.Node)
     btnClose: cc.Node = null;
 
@@ -48,6 +56,8 @@ export default class SelHeroView extends UIBase {
         let selId = ModelManager.getPlayer().getSelId();
         for (const item of this.selHeroContent.children)
             item.getComponent(SelHeroPrefab).setSelType(selId);
+        this.textGold.string = String(ModelManager.getPlayer().getGold());
+        this.textDiamonds.string = String(ModelManager.getPlayer().getDiamonds());
     }
 
     // update (dt) {}

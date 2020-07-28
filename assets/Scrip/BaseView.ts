@@ -1,6 +1,6 @@
 const { ccclass, property } = cc._decorator;
 import HeroBaseMng from './Manager/HeroBaseMng';
-import GameDef from './Define/GameDef';
+import { SpeedDef } from './Define/GameDef';
 
 @ccclass
 export default class BaseView extends cc.Component {
@@ -39,15 +39,15 @@ export default class BaseView extends cc.Component {
         this.heroMng.enter(this, this.changeGameState);
     }
 
-    moveBg(dt) {
+    moveBg(dt: number) {
         for (let i = 0; i < 2; i++) {
-            this.bg1[i].x -= dt * GameDef.BG_MIDDLE_SPEED;
+            this.bg1[i].x -= dt * SpeedDef.BG_MIDDLE_SPEED;
             if (this.bg1[i].x < -this.bg1[i].width)
                 this.bg1[i].x += this.bg1[i].width * 2;
-            this.bg2[i].x -= dt * GameDef.BG_NEAR_SPEED;
+            this.bg2[i].x -= dt * SpeedDef.BG_NEAR_SPEED;
             if (this.bg2[i].x < -this.bg2[i].width)
                 this.bg2[i].x += this.bg2[i].width * 2;
-            this.bg3[i].x -= dt * GameDef.BG_RIVER_SPEED;
+            this.bg3[i].x -= dt * SpeedDef.BG_RIVER_SPEED;
             if (this.bg3[i].x < -this.bg3[i].width)
                 this.bg3[i].x += this.bg3[i].width * 2 - 2;
         }
