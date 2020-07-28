@@ -171,7 +171,7 @@
       "array": [
         0,
         0,
-        507.4908866176811,
+        348.3764937562847,
         0,
         0,
         0,
@@ -3876,23 +3876,9 @@
     },
     "_enabled": true,
     "isShowInit": true,
-    "floorPref": [
-      {
-        "__uuid__": "81fe77bf-db85-4bb8-8ef8-5ed1a7cbdce8"
-      },
-      {
-        "__uuid__": "934628e6-d715-4acb-8b4b-253da662321d"
-      },
-      {
-        "__uuid__": "2caa81ab-e4a1-4fe6-abb7-249757208e03"
-      },
-      {
-        "__uuid__": "89262bbb-08c6-4aef-a0d3-63d611ae7353"
-      },
-      {
-        "__uuid__": "0ba361f8-34fc-4466-878d-2ed9ce34cfba"
-      }
-    ],
+    "floorPref": {
+      "__uuid__": "81fe77bf-db85-4bb8-8ef8-5ed1a7cbdce8"
+    },
     "_id": "221df9O9NJT7ozlpsqnDmv"
   },
   {
@@ -3939,15 +3925,15 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        130,
-        100,
+        180,
+        150,
         0,
         0,
         0,
         0,
         1,
-        0.5,
-        0.5,
+        1,
+        1,
         1
       ]
     },
@@ -4258,15 +4244,15 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        1150,
-        100,
+        1100,
+        150,
         0,
         0,
         0,
         0,
         1,
-        0.5,
-        0.5,
+        1,
+        1,
         1
       ]
     },
@@ -4572,6 +4558,9 @@
     ],
     "btnSlip": {
       "__id__": 83
+    },
+    "floorManager": {
+      "__id__": 78
     },
     "_id": "0e2NkaIwxGdYBfTdMg1LLG"
   },

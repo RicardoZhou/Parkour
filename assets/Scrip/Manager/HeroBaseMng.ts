@@ -1,8 +1,8 @@
 const { ccclass, property } = cc._decorator;
-import { GAMER_STATE } from '../Define/GameDef';
+import { GameState } from '../Define/GameDef';
 
 @ccclass
-export default abstract  class HeroBaseMng extends cc.Component {
+export default abstract class HeroBaseMng extends cc.Component {
 
     @property(cc.Animation)
     animation: cc.Animation = null;
@@ -12,7 +12,7 @@ export default abstract  class HeroBaseMng extends cc.Component {
     //now jump stage, if jumpStage > jumpMax, can not jump next
     jumpStage: number = -1;
     baseY: number;
-    state: GAMER_STATE = 0;
+    state: GameState = 0;
 
     onLoad() {
     }
@@ -20,7 +20,7 @@ export default abstract  class HeroBaseMng extends cc.Component {
     abstract jump(): void;
 
     setGamerState(state: string) {
-        this.state = GAMER_STATE[state];
+        this.state = GameState[state];
     }
 
     doClip(clip: string) {
@@ -31,19 +31,19 @@ export default abstract  class HeroBaseMng extends cc.Component {
 
     checkClip(clip: string): boolean {
         switch (this.state) {
-            case GAMER_STATE.init:
-                return GAMER_STATE.enter == GAMER_STATE[clip];
-            case GAMER_STATE.enter:
+            case GameState.init:
+                return GameState.enter == GameState[clip];
+            case GameState.enter:
                 return false;
-            case GAMER_STATE.run:
-                return GAMER_STATE.jump == GAMER_STATE[clip]
-                    || GAMER_STATE.slip == GAMER_STATE[clip];
-            case GAMER_STATE.jump:
-                return GAMER_STATE.jump == GAMER_STATE[clip]
-                    || GAMER_STATE.run == GAMER_STATE[clip]
-                    || GAMER_STATE.slip == GAMER_STATE[clip];
-            case GAMER_STATE.slip:
-                return GAMER_STATE.run == GAMER_STATE[clip];
+            case GameState.run:
+                return GameState.jump == GameState[clip]
+                    || GameState.slip == GameState[clip];
+            case GameState.jump:
+                return GameState.jump == GameState[clip]
+                    || GameState.run == GameState[clip]
+                    || GameState.slip == GameState[clip];
+            case GameState.slip:
+                return GameState.run == GameState[clip];
             default:
                 break;
         }
@@ -52,9 +52,9 @@ export default abstract  class HeroBaseMng extends cc.Component {
 
     enter(target: cc.Component, callback: Function) {
         this.baseY = this.node.y;
-        let act = cc.moveTo(2, cc.v2(200, this.node.y));
+        let act = cc.moveTo(2, cc.v2(250, this.node.y));
         let callFunc = cc.callFunc(function () {
-            callback.call(target, 0);
+            callback.call(target, GameState.run);
             this.setGamerState('run');
         }.bind(this));
         this.node.runAction(cc.sequence(act, callFunc));

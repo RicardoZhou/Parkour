@@ -1,6 +1,7 @@
 const { ccclass, property } = cc._decorator;
 import HeroBaseMng from './Manager/HeroBaseMng';
-import { SpeedDef } from './Define/GameDef';
+import { SpeedDef, GameState } from './Define/GameDef';
+import FloorManager from './Game/FloorManager';
 
 @ccclass
 export default class BaseView extends cc.Component {
@@ -15,10 +16,12 @@ export default class BaseView extends cc.Component {
     bg3: cc.Node[] = [];
     @property(cc.Button)
     btnSlip: cc.Button = null;
+    @property(FloorManager)
+    floorManager: FloorManager = null;
 
     hero: cc.Node;
     heroMng: HeroBaseMng;
-    state: number;//game state => -1 : init, 0 : start, 1 : over
+    gameState: GameState;
 
     onLoad() {
         this.hero = cc.instantiate(this.heroPrf[0]);
@@ -28,11 +31,12 @@ export default class BaseView extends cc.Component {
         this.btnSlip.node.on(cc.Node.EventType.TOUCH_START, this.onSlipTouchStart, this);
         this.btnSlip.node.on(cc.Node.EventType.TOUCH_END, this.onSlipTouchEnd, this);
         this.btnSlip.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onSlipTouchEnd, this);
-        this.changeGameState(-1);
+        this.changeGameState(GameState.init);
     }
 
-    changeGameState(state: number) {
-        this.state = state;
+    changeGameState(state: GameState) {
+        this.gameState = state;
+        this.floorManager.gameState = state;
     }
 
     start() {
@@ -54,7 +58,7 @@ export default class BaseView extends cc.Component {
     }
 
     onActTouch(target: cc.Node, data: any) {
-        if (this.state < 0)
+        if (this.gameState < GameState.run)
             return true;
         if (data == 'jump') {
             this.heroMng.doClip(data);
@@ -70,7 +74,7 @@ export default class BaseView extends cc.Component {
     }
 
     update(dt) {
-        if (this.state < 0)
+        if (this.gameState < GameState.run || this.gameState == GameState.die)
             return true;
         this.moveBg(dt);
     }
