@@ -22,16 +22,21 @@ export default class BaseView extends cc.Component {
     hero: cc.Node;
     heroMng: HeroBaseMng;
     gameState: GameState;
+    colliderManager: cc.CollisionManager = null;
 
     onLoad() {
         this.hero = cc.instantiate(this.heroPrf[0]);
         this.node.addChild(this.hero);
-        this.hero.position = cc.v2(-60, 120);
+        this.hero.setPosition(-60, 120);
         this.heroMng = this.hero.getComponent('Hero0Mng');
         this.btnSlip.node.on(cc.Node.EventType.TOUCH_START, this.onSlipTouchStart, this);
         this.btnSlip.node.on(cc.Node.EventType.TOUCH_END, this.onSlipTouchEnd, this);
         this.btnSlip.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onSlipTouchEnd, this);
-        this.changeGameState(GameState.init);
+        this.changeGameState(GameState.INIT);
+
+        this.colliderManager = cc.director.getCollisionManager();
+        this.colliderManager.enabled = true;
+        this.colliderManager.enabledDebugDraw = true;
     }
 
     changeGameState(state: GameState) {
@@ -58,23 +63,23 @@ export default class BaseView extends cc.Component {
     }
 
     onActTouch(target: cc.Node, data: any) {
-        if (this.gameState < GameState.run)
+        if (this.gameState < GameState.RUN)
             return true;
         if (data == 'jump') {
-            this.heroMng.doClip(data);
+            this.heroMng.doClip(GameState.JUMP);
         }
     }
 
     onSlipTouchStart() {
-        this.heroMng.doClip('slip');
+        this.heroMng.doClip(GameState.SLIP);
     }
 
     onSlipTouchEnd() {
-        this.heroMng.doClip('run');
+        this.heroMng.doClip(GameState.RUN);
     }
 
-    update(dt) {
-        if (this.gameState < GameState.run || this.gameState == GameState.die)
+    update(dt: number) {
+        if (this.gameState < GameState.RUN || this.gameState == GameState.DIE)
             return true;
         this.moveBg(dt);
     }

@@ -16,8 +16,8 @@ export default class FloorManager extends UIBase {
     floorX: number = 0;
 
     onLoad() {
-        this.gameState = GameState.init;
-        for (let i = BuildType.start; i <= BuildType.high; i++)
+        this.gameState = GameState.INIT;
+        for (let i = BuildType.START; i <= BuildType.HIGHT; i++)
             this.floorPool[i] = new cc.NodePool();
         for (let i = 0; i < 15; i++) {
             let floor: cc.Node = null;
@@ -43,7 +43,7 @@ export default class FloorManager extends UIBase {
     }
 
     update(dt: number) {
-        if (this.gameState < GameState.run || this.gameState == GameState.die)
+        if (this.gameState < GameState.RUN || this.gameState == GameState.DIE)
             return true;
         this.floorX -= dt * SpeedDef.FLOOR_SPEED
         this.floorMap.forEach((floor, index) => {

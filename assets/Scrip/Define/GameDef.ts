@@ -1,4 +1,9 @@
-export enum GameState { init, enter, run, jump, slip, die };
+export enum GameState { INIT, ENTER, RUN, JUMP, SLIP, DIE };
+
+export enum ColliderGroup {
+    HERO = 'Hero',
+    FLOOR = 'Floor',
+}
 
 export enum SpeedDef {
     BG_MIDDLE_SPEED = 50,
@@ -8,9 +13,11 @@ export enum SpeedDef {
 };
 
 export enum BuildType {
-    start,
-    middle1,
-    middle2,
-    end,
-    high,
+    START,
+    MIDDLE1,
+    MIDDLE2,
+    END,
+    HIGHT,
 };
+
+export const GRAVITY = 50;

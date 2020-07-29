@@ -140,8 +140,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 2,
+    "groupIndex": 2,
     "_id": ""
   },
   {
@@ -200,26 +200,30 @@
     "atlas": {
       "__uuid__": "fa9ead30-ea25-4b87-83ef-813adf9a95cc"
     },
+    "collider": {
+      "__id__": 6
+    },
     "_id": ""
   },
   {
-    "__type__": "cc.Mask",
+    "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
-    "_enabled": false,
-    "_materials": [
-      {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
-      }
-    ],
-    "_spriteFrame": null,
-    "_type": 0,
-    "_segments": 64,
-    "_N$alphaThreshold": 0.1,
-    "_N$inverted": false,
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 25.5,
+      "y": 66
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 51,
+      "height": 132
+    },
     "_id": ""
   },
   {
