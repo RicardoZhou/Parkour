@@ -44,7 +44,7 @@ export default class HeroBaseMng extends UIBase implements Utils.BoxColliderList
 
 	enter(target: cc.Component, callback: Function) {
 		this.baseY = this.node.y;
-		let act = cc.moveTo(2, cc.v2(250, this.node.y));
+		let act = cc.moveTo(2, cc.v2(400, this.node.y));
 		let callFunc = cc.callFunc(function () {
 			callback.call(target, GameState.RUN);
 			this.setGamerState(GameState.RUN);
