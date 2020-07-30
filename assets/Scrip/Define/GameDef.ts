@@ -6,10 +6,12 @@ export enum ColliderGroup {
 }
 
 export enum SpeedDef {
+    GRAVITY = 50,
     BG_MIDDLE_SPEED = 50,
     BG_NEAR_SPEED = 80,
     BG_RIVER_SPEED = 100,
-    FLOOR_SPEED = 130,
+    FLOOR_SPEED = 250,
+    HERO_SPEED_MIN = -600,
 };
 
 export enum BuildType {
@@ -19,5 +21,3 @@ export enum BuildType {
     END,
     HIGHT,
 };
-
-export const GRAVITY = 50;

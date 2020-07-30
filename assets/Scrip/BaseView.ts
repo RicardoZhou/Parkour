@@ -18,6 +18,8 @@ export default class BaseView extends cc.Component {
 	btnSlip: cc.Button = null;
 	@property(FloorManager)
 	floorManager: FloorManager = null;
+	@property(cc.Node)
+	heroManager: cc.Node = null;
 
 	hero: cc.Node;
 	heroMng: HeroBaseMng;
@@ -26,8 +28,7 @@ export default class BaseView extends cc.Component {
 
 	onLoad() {
 		this.hero = cc.instantiate(this.heroPrf[0]);
-		this.node.addChild(this.hero);
-		this.hero.setPosition(-60, 120);
+		this.heroManager.addChild(this.hero);
 		this.heroMng = this.hero.getComponent('Hero0Mng');
 		this.btnSlip.node.on(cc.Node.EventType.TOUCH_START, this.onSlipTouchStart, this);
 		this.btnSlip.node.on(cc.Node.EventType.TOUCH_END, this.onSlipTouchEnd, this);
@@ -36,7 +37,7 @@ export default class BaseView extends cc.Component {
 
 		this.colliderManager = cc.director.getCollisionManager();
 		this.colliderManager.enabled = true;
-		// this.colliderManager.enabledDebugDraw = true;
+		this.colliderManager.enabledDebugDraw = true;
 	}
 
 	changeGameState(state: GameState) {

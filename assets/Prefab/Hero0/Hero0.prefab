@@ -50,7 +50,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0
     },
     "_trs": {
@@ -101,7 +101,7 @@
       "__uuid__": "901fb7cd-6aee-4744-89cf-f01e64e8b5e2"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 2,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -156,11 +156,7 @@
     "animation": {
       "__id__": 3
     },
-    "speed": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
+    "acceleration": 1,
     "jumpSpeed": [
       1000,
       1000
@@ -178,7 +174,7 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -56,
       "y": 51.5
     },
     "_size": {
